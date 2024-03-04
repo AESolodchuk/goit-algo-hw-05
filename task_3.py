@@ -9,8 +9,6 @@ second_text = requests.get(
     "https://drive.google.com/uc?id=13hSt4JkJc11nckZZz2yoFHYL89a4XkMZ"
 ).text
 
-
-print(first_text)
 phraze_to_find_first_text = "Пошук – поширена дія, яка виконується в бізнес-додатках"
 phraze_to_find_second_text = "Випадковим чином обирається контрольна сесія"
 phrazae_to_find_improvization = "щось таке чого нема у тексті"
@@ -42,6 +40,7 @@ ti_search_rabin_karp_first_text = timeit.timeit(
 )
 
 # Пошук у другому тексті
+
 te_search_boyer_moore_second_text = timeit.timeit(
     lambda: boyer_moore.boyer_moore_search(second_text, phraze_to_find_second_text),
     number=5,
@@ -66,8 +65,6 @@ ti_search_rabin_karp_second_text = timeit.timeit(
     number=5,
 )
 
-
-print("First text")
 print(f"|{'Algorithm':^20} | {'Exist':^20} | {'Improvization':^20} |")
 print(f"|{'-'*20} | {'-'*20} | {'-'*20} |")
 print(

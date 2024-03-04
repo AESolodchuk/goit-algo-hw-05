@@ -1,34 +1,30 @@
-def binary_search(arr, x):
-    low = 0
-    high = len(arr) - 1
-    mid = 0
-    i = 0
+def binary_search_with_upper_bound(arr, target):
+    low, high = 0, len(arr) - 1
+    iterations = 0
+    upper_bound = arr[-1]  # Початкове значення - максимальний елемент масиву
 
     while low <= high:
-        i += 1
+        iterations += 1
+        mid = (low + high) // 2
 
-        mid = (high + low) // 2
-
-        # якщо x більше за значення посередині списку, ігноруємо ліву половину
-        if arr[mid] < x:
+        if arr[mid] < target:
             low = mid + 1
-
-        # якщо x менше за значення посередині списку, ігноруємо праву половину
-        elif arr[mid] > x:
+        else:
+            upper_bound = arr[mid]
             high = mid - 1
 
-        # інакше x присутній на позиції і повертаємо його
-        else:
-            return i, arr[mid]
-
-    # якщо елемент не знайдений
-    return -1
+    return iterations, upper_bound
 
 
-arr = [2.3, 3, 3.3, 4, 10.2, 40]
-x = 3.3
-result = binary_search(arr, x)
-if result != -1:
-    print(f"{result}")
-else:
-    print("Element is not present in array")
+if __name__ == "__main__":
+    # Тестування функції
+    arr = [1.1, 1.3, 2.5, 3.8, 4.6, 5.9]
+    print(
+        binary_search_with_upper_bound(arr, 3.5)
+    )  # Виведе: (кількість ітерацій, верхню межу)
+    print(
+        binary_search_with_upper_bound(arr, 4)
+    )  # Виведе: (кількість ітерацій, верхню межу)
+    print(
+        binary_search_with_upper_bound(arr, 6.0)
+    )  # Виведе: (кількість ітерацій, максимальний елемент)
