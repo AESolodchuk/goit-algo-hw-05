@@ -20,7 +20,7 @@ if __name__ == "__main__":
     # Тестування функції
     arr = [1.1, 1.3, 2.5, 3.8, 4.6, 5.9]
     print(
-        binary_search_with_upper_bound(arr, 3.5)
+        binary_search_with_upper_bound(arr, 15.1)
     )  # Виведе: (кількість ітерацій, верхню межу)
     print(
         binary_search_with_upper_bound(arr, 4)
